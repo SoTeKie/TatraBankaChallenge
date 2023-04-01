@@ -1,0 +1,28 @@
+[package]
+name = "axum_messenger"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum = { version = "0.6.11", features = ["headers", "macros"] }
+chrono = { version = "0.4.24", features = ["serde"] }
+clap = { version = "4.1.13", features = ["derive", "env"] }
+dotenvy = "0.15.7"
+jsonwebtoken = "8.3.0"
+lazy_static = "1.4.0"
+secrecy = { version = "0.8.0", features = ["serde"] }
+serde = { version = "1.0.156", features = ["derive"] }
+sha3 = "0.10.6"
+sqlx = { version = "0.6.2", features = ["runtime-tokio-rustls", "any", "postgres", "macros", "uuid", "time", "chrono", "migrate"] }
+tokio = { version = "1.26.0", features = ["full"] }
+
+[dependencies.uuid]
+version = "1.3.0"
+features = [
+    "v4",                # Lets you generate random UUIDs
+    "fast-rng",          # Use a faster (but still sufficiently random) RNG
+    "macro-diagnostics", # Enable better diagnostics for compile-time UUIDs
+    "serde",
+]
