@@ -1,5 +1,6 @@
 import DonutChart from 'react-donut-chart';
 import styled from 'styled-components';
+import { Person } from '../person/person';
 
 const Container = styled.div`
 	text-align: center;
@@ -40,36 +41,33 @@ const Legends = styled.div`
 	justify-content: right;
 	align-items: center;
 `
-export default function Legend() {
-	const values = [
-		{
-			label: 'II. and III. pillar',
-			value: 35,
-			color: '#3C96F7',
-		},
-		{
-			label: 'Investment portfolio #1',
-			value: 15,
-			color: '#A37080',
-		},
-		{
-			label: 'Investment portfolia #3',
-			value: 50,
-			color: '#147A48',
-		},
-	];
+
+interface PropsType {
+	person: Person;
+}
+
+export default function Legend(props: PropsType) {
+	const summedAmount = props.person.profile.accounts.reduce((sum, current) => sum + current.amount, 0);
+	const values = props.person.profile.accounts.map(a => {
+		return {
+			label: a.name,
+			value: (a.amount / summedAmount) * 100,
+			color: a.color
+		};
+	})
 
 	return <Container>
-		<DonutChart
-			selectedOffset={0}
-			width={275}
-			height={275}
-			legend={false}
-			interactive={false}
-			outerRadius={0.95}
-			colors={values.map(v => v.color)}
-			data={values}
-		/>
+		{values.length !== 0 &&
+			<DonutChart
+				selectedOffset={0}
+				width={275}
+				height={275}
+				legend={false}
+				interactive={false}
+				outerRadius={0.95}
+				colors={values.map(v => v.color)}
+				data={values}
+			/>}
 		{values.map(v => {
 			return <Legends>
 				<LegendsText>{v.label}</LegendsText>
