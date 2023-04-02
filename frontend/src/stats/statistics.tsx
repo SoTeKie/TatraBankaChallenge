@@ -1,4 +1,3 @@
-import { profile } from "console";
 import styled from "styled-components"
 import { Profile } from "../person/person";
 

@@ -19,7 +19,7 @@ const Container = styled.div`
 		aria-valuetext: "supertest";
 		fill: white;
 	}
-`
+`;
 
 const LegendItem = styled.div`
 	height: 10px;
@@ -28,19 +28,19 @@ const LegendItem = styled.div`
 	margin-left: 5px;
 	display: inline-block;
 	background-color: ${props => props.color}
-`
+`;
 
 const LegendsText = styled.div`
 	display: inline-block;
 	font-size: 8px;
-`
+`;
 const Legends = styled.div`
 	margin: auto;
 	display: flex;
 	flex-direction: row;
 	justify-content: right;
 	align-items: center;
-`
+`;
 
 interface PropsType {
 	person: Person;
